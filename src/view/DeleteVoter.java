@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.EventQueue;
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -57,9 +58,6 @@ public class DeleteVoter extends JFrame {
 		btnCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String numberVoter = textField.getText();
-				Voter.voters.add( new Voter(1, "senha123", "Ramon Eleitor") );
-				Voter.voters.add( new Voter(2, "senha12", "Yure Eleitor") );
-
 				try {
 					Voter voter = VoterController.getById( Integer.parseInt(numberVoter) );
 					Voter.voters.remove(voter);

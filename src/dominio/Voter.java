@@ -69,10 +69,6 @@ public class Voter implements Comparable<Voter>{
 		return point;
 	}
 	
-	public int getId() {
-		return this.id;
-	}
-
 	public void setPoint(Point point) {
 		this.point = point;
 	}

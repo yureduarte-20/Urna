@@ -63,10 +63,8 @@ public class RegisterCandidate extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String numberVoter = textField.getText();
 				String numberParty = textField_1.getText();
-				Voter.voters.add( new Voter(1, "senha123", "Ramon Eleitor") );
-				Party.parties.add( new Party("Partido dos Vagabundos", "PT", 13) );
 				
-								
+
 				try {
 					Candidate candidate = RegisterController.saveCandidate(
 												Integer.parseInt(numberVoter),

@@ -55,8 +55,7 @@ public class RegisterBoardMember extends JFrame {
 		btnCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String numberVoter = textField.getText();
-				Voter.voters.add( new Voter(1, "senha123", "Ramon Eleitor") );
-								
+				
 				try {
 					BoardMember member = RegisterController.createMember( Integer.parseInt(numberVoter), Autenticator.authenticatedTechnician);
 					
