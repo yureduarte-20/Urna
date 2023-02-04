@@ -41,7 +41,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterBoardMember().setVisible(true);
 			}
 		});
-		btnCas.setBounds(161, 58, 185, 25);
+		btnCas.setBounds(161, 49, 185, 25);
 		contentPane.add(btnCas);
 		
 		JButton btnCadastro = new JButton("Cadastro Candidato");
@@ -51,7 +51,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterCandidate().setVisible(true);
 			}
 		});
-		btnCadastro.setBounds(161, 105, 185, 25);
+		btnCadastro.setBounds(161, 86, 185, 25);
 		contentPane.add(btnCadastro);
 		
 		JButton btnDeletarEleitor = new JButton("Deletar Eleitor");
@@ -61,7 +61,17 @@ public class TechnicalInterface extends JFrame {
 				new DeleteVoter().setVisible(true);
 			}
 		});
-		btnDeletarEleitor.setBounds(161, 153, 185, 25);
+		btnDeletarEleitor.setBounds(161, 123, 185, 25);
 		contentPane.add(btnDeletarEleitor);
+		
+		JButton btnMontarChapa = new JButton("Montar Partido");
+		btnMontarChapa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RegisterParty().setVisible(true);
+			}
+		});
+		btnMontarChapa.setBounds(161, 160, 185, 25);
+		contentPane.add(btnMontarChapa);
 	}
 }

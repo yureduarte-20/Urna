@@ -4,9 +4,11 @@ import java.awt.Point;
 
 import dominio.BoardMember;
 import dominio.Candidate;
+import dominio.Party;
 import dominio.Technician;
 import dominio.Voter;
 import exceptions.NotEligible;
+import exceptions.PartyNotFound;
 import exceptions.UserAlreadyExists;
 import exceptions.UserNotFound;
 
@@ -30,8 +32,10 @@ public class RegisterController {
 	}
 	
 	
-	public static Candidate saveCandidate(int id, Technician tech, String fictitiousName) throws NotEligible, UserNotFound {
-		return Candidate.createCandidate(id, tech, fictitiousName);
+	public static Candidate saveCandidate(int id, Technician tech, String fictitiousName, int partyNumber) throws NotEligible, UserNotFound, PartyNotFound {
+		Party party = PartyController.getByNumber(partyNumber);
+		
+		return Candidate.createCandidate(id, tech, fictitiousName, party);
 	}
 	
 	
