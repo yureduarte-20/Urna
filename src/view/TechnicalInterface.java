@@ -31,7 +31,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterVoter().setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(161, 12, 169, 25);
+		btnNewButton.setBounds(161, 12, 185, 25);
 		contentPane.add(btnNewButton);
 		
 		JButton btnCas = new JButton("Cadastro Mesário");
@@ -41,7 +41,17 @@ public class TechnicalInterface extends JFrame {
 				new RegisterBoardMember().setVisible(true);
 			}
 		});
-		btnCas.setBounds(161, 58, 169, 25);
+		btnCas.setBounds(161, 58, 185, 25);
 		contentPane.add(btnCas);
+		
+		JButton btnCadastro = new JButton("Cadastro Candidato");
+		btnCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RegisterCandidate().setVisible(true);
+			}
+		});
+		btnCadastro.setBounds(161, 105, 185, 25);
+		contentPane.add(btnCadastro);
 	}
 }

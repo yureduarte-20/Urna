@@ -57,5 +57,9 @@ public class Voter implements Comparable<Voter>{
 	public void setSession(Session session) {
 		this.session = session;
 	}
+	
+	public boolean isEligible() {
+		return true;
+	}
 
 }
