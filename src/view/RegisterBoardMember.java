@@ -29,7 +29,7 @@ public class RegisterBoardMember extends JFrame {
 	 */
 	public RegisterBoardMember() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 404, 298);
+		setBounds(100, 100, 394, 256);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -39,16 +39,16 @@ public class RegisterBoardMember extends JFrame {
 		setContentPane(contentPane);
 		
 		textField = new JTextField();
-		textField.setBounds(106, 84, 190, 32);
+		textField.setBounds(103, 108, 190, 32);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblInsiraAsInformaes = new JLabel("Insira as Informações do Mesário");
-		lblInsiraAsInformaes.setBounds(75, 12, 250, 15);
+		lblInsiraAsInformaes.setBounds(72, 36, 250, 15);
 		contentPane.add(lblInsiraAsInformaes);
 		
 		JLabel lblNmeroDoEleito = new JLabel("Número do Eleitor");
-		lblNmeroDoEleito.setBounds(106, 68, 137, 15);
+		lblNmeroDoEleito.setBounds(103, 92, 137, 15);
 		contentPane.add(lblNmeroDoEleito);
 		
 		JButton btnCadastro = new JButton("Cadastro");
@@ -67,7 +67,17 @@ public class RegisterBoardMember extends JFrame {
 								
 			}
 		});
-		btnCadastro.setBounds(146, 162, 117, 25);
+		btnCadastro.setBounds(143, 164, 117, 25);
 		contentPane.add(btnCadastro);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TechnicalInterface().setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(317, 0, 77, 25);
+		contentPane.add(btnVoltar);
 	}
 }

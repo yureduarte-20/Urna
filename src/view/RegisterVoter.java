@@ -36,7 +36,7 @@ public class RegisterVoter extends JFrame {
 	public RegisterVoter() {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 440, 370);
+		setBounds(100, 100, 389, 412);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -45,56 +45,66 @@ public class RegisterVoter extends JFrame {
 		
 		JLabel lblCadastroDoEleitor = new JLabel("Cadastro do Eleitor");
 		lblCadastroDoEleitor.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblCadastroDoEleitor.setBounds(140, 12, 177, 21);
+		lblCadastroDoEleitor.setBounds(95, 12, 177, 21);
 		contentPane.add(lblCadastroDoEleitor);
 		
 		JTextPane inputNumRegister = new JTextPane();
-		inputNumRegister.setBounds(95, 86, 288, 30);
+		inputNumRegister.setBounds(50, 86, 288, 30);
 		contentPane.add(inputNumRegister);
 		
 		JLabel lblNmeroDeCadastro = new JLabel("Número de Cadastro");
-		lblNmeroDeCadastro.setBounds(95, 71, 159, 15);
+		lblNmeroDeCadastro.setBounds(50, 71, 159, 15);
 		contentPane.add(lblNmeroDeCadastro);
 		
 		JTextPane name = new JTextPane();
-		name.setBounds(95, 143, 288, 30);
+		name.setBounds(50, 143, 288, 30);
 		contentPane.add(name);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(105, 128, 159, 15);
+		lblNome.setBounds(50, 127, 159, 15);
 		contentPane.add(lblNome);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(95, 182, 159, 15);
+		lblSenha.setBounds(50, 182, 159, 15);
 		contentPane.add(lblSenha);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(95, 196, 288, 30);
+		passwordField.setBounds(50, 196, 288, 30);
 		contentPane.add(passwordField);
 		
 		
-		btnCadastrar.setBounds(174, 305, 117, 25);
+		btnCadastrar.setBounds(131, 330, 117, 25);
 		contentPane.add(btnCadastrar);
 		
 		JLabel lblGeolocalizao = new JLabel("Geolocalização");
-		lblGeolocalizao.setBounds(95, 224, 159, 15);
+		lblGeolocalizao.setBounds(50, 238, 159, 15);
 		contentPane.add(lblGeolocalizao);
 		
 		JTextPane inputX = new JTextPane();
-		inputX.setBounds(95, 264, 137, 30);
+		inputX.setBounds(50, 278, 137, 30);
 		contentPane.add(inputX);
 		
 		JTextPane inputY = new JTextPane();
-		inputY.setBounds(244, 264, 139, 30);
+		inputY.setBounds(199, 278, 139, 30);
 		contentPane.add(inputY);
 		
 		JLabel lblX = new JLabel("X");
-		lblX.setBounds(95, 238, 38, 15);
+		lblX.setBounds(112, 261, 38, 15);
 		contentPane.add(lblX);
 		
-		JLabel lblY = new JLabel("y");
-		lblY.setBounds(244, 237, 159, 15);
+		JLabel lblY = new JLabel("Y");
+		lblY.setBounds(262, 261, 38, 15);
 		contentPane.add(lblY);
+		
+		JButton btnSair = new JButton("Voltar");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TechnicalInterface().setVisible(true);
+			}
+		});
+		btnSair.setBounds(305, 0, 84, 25);
+		contentPane.add(btnSair);
 		
 		
 		

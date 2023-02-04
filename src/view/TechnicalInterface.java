@@ -3,6 +3,9 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controllers.Autenticator;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -61,17 +64,28 @@ public class TechnicalInterface extends JFrame {
 				new DeleteVoter().setVisible(true);
 			}
 		});
-		btnDeletarEleitor.setBounds(161, 123, 185, 25);
+		btnDeletarEleitor.setBounds(161, 160, 185, 25);
 		contentPane.add(btnDeletarEleitor);
 		
-		JButton btnMontarChapa = new JButton("Montar Partido");
+		JButton btnMontarChapa = new JButton("Cadastrar Partido");
 		btnMontarChapa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				new RegisterParty().setVisible(true);
 			}
 		});
-		btnMontarChapa.setBounds(161, 160, 185, 25);
+		btnMontarChapa.setBounds(161, 123, 185, 25);
 		contentPane.add(btnMontarChapa);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Autenticator.authenticatedTechnician = null;
+				new Main().setVisible(true);
+			}
+		});
+		btnSair.setBounds(450, 0, 62, 25);
+		contentPane.add(btnSair);
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import controllers.Autenticator;
 import dominio.Technician;
 import exceptions.UserNotFound;
+import seeders.Seeders;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -50,6 +51,9 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Main() {
+		Seeders.insertValues();
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 421);
 		contentPane = new JPanel();

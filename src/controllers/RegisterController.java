@@ -8,15 +8,13 @@ import dominio.Party;
 import dominio.Technician;
 import dominio.Voter;
 import exceptions.NotEligible;
+import exceptions.PartyAlreadyExists;
 import exceptions.PartyNotFound;
 import exceptions.UserAlreadyExists;
 import exceptions.UserNotFound;
 import dominio.Session;
-import dominio.Voter;
 import dominio.Zone;
-import exceptions.SessionNotFound;
-import exceptions.UserAlreadyExists;
-import exceptions.ZoneNotFound;
+
 
 public class RegisterController {
 	static Random generator = new Random();
@@ -34,18 +32,7 @@ public class RegisterController {
 
 		return newVoter;
 	}
-
-	public static BoardMember createMember(int id, Technician tech) throws UserNotFound {
-		return BoardMember.createMember(id, tech);
-	}
-
-	public static Candidate saveCandidate(int id, Technician tech, String fictitiousName, int partyNumber)
-			throws NotEligible, UserNotFound, PartyNotFound {
-		Party party = PartyController.getByNumber(partyNumber);
-
-		return Candidate.createCandidate(id, tech, fictitiousName, party);
-	}
-
+	
 	private static Zone selectBestZone(Point point) {
 		var zones = Zone.getZones();
 		int length = zones.size() - 1;
@@ -65,4 +52,33 @@ public class RegisterController {
 		voter.setSession(session);
 		return voter;
 	}
+	
+	
+	
+	
+	
+	
+
+	public static BoardMember createMember(int id, Technician tech) throws UserNotFound {
+		return BoardMember.createMember(id, tech);
+	}
+
+	public static Candidate saveCandidate(int id, Technician tech, String fictitiousName, int partyNumber) throws NotEligible, UserNotFound, PartyNotFound {
+		Party party = PartyController.getByNumber(partyNumber);
+
+		return Candidate.createCandidate(id, tech, fictitiousName, party);
+	}
+	
+	public static Party saveParty(String name, int number, String acronym) throws PartyAlreadyExists {
+		Party party = new Party(name, acronym, number);
+		
+		if(!Party.parties.contains(party)) {
+			Party.parties.add(party);
+			return party;
+		}
+		
+		throw new PartyAlreadyExists();
+	}
+
+	
 }

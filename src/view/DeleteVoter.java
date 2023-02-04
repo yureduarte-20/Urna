@@ -32,7 +32,7 @@ public class DeleteVoter extends JFrame {
 	 */
 	public DeleteVoter() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 404, 298);
+		setBounds(100, 100, 467, 244);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -42,16 +42,16 @@ public class DeleteVoter extends JFrame {
 		setContentPane(contentPane);
 		
 		textField = new JTextField();
-		textField.setBounds(106, 84, 190, 32);
+		textField.setBounds(131, 99, 190, 32);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblInsiraAsInformaes = new JLabel("Digite o número do eleitor que queira deletar");
-		lblInsiraAsInformaes.setBounds(40, 12, 342, 15);
+		lblInsiraAsInformaes.setBounds(65, 27, 342, 15);
 		contentPane.add(lblInsiraAsInformaes);
 		
 		JLabel lblNmeroDoEleito = new JLabel("Número do Eleitor");
-		lblNmeroDoEleito.setBounds(106, 68, 137, 15);
+		lblNmeroDoEleito.setBounds(131, 83, 137, 15);
 		contentPane.add(lblNmeroDoEleito);
 		
 		JButton btnCadastro = new JButton("Deletar");
@@ -69,7 +69,17 @@ public class DeleteVoter extends JFrame {
 				
 			}
 		});
-		btnCadastro.setBounds(146, 162, 117, 25);
+		btnCadastro.setBounds(171, 177, 117, 25);
 		contentPane.add(btnCadastro);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new TechnicalInterface().setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(380, 0, 77, 25);
+		contentPane.add(btnVoltar);
 	}
 }
