@@ -24,7 +24,7 @@ public class TechnicalInterface extends JFrame {
 
 		setContentPane(contentPane);
 		
-		JButton btnNewButton = new JButton("Cadastrar eleitor");
+		JButton btnNewButton = new JButton("Cadastrar Eleitor");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -53,5 +53,15 @@ public class TechnicalInterface extends JFrame {
 		});
 		btnCadastro.setBounds(161, 105, 185, 25);
 		contentPane.add(btnCadastro);
+		
+		JButton btnDeletarEleitor = new JButton("Deletar Eleitor");
+		btnDeletarEleitor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new DeleteVoter().setVisible(true);
+			}
+		});
+		btnDeletarEleitor.setBounds(161, 153, 185, 25);
+		contentPane.add(btnDeletarEleitor);
 	}
 }
