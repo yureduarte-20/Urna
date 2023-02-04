@@ -4,11 +4,11 @@ import java.awt.Point;
 
 public class Session {
 
-	public Session(int sessionNumber, Point address, boolean hasVacancy) {
+	public Session(int sessionNumber, Point address) {
 		super();
 		this.sessionNumber = sessionNumber;
 		this.address = address;
-		this.hasVacancy = hasVacancy;
+	
 	}
 	private int sessionNumber;
 	private Point address = new Point();	
