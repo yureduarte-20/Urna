@@ -3,8 +3,6 @@ package dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-import exceptions.UserAlreadyExists;
-
 public class Technician implements Comparable<Technician>{
 
 	public static final List<Technician> technical = new ArrayList<>();

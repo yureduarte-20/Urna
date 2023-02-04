@@ -33,5 +33,15 @@ public class TechnicalInterface extends JFrame {
 		});
 		btnNewButton.setBounds(161, 12, 169, 25);
 		contentPane.add(btnNewButton);
+		
+		JButton btnCas = new JButton("Cadastro Mesário");
+		btnCas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RegisterBoardMember().setVisible(true);
+			}
+		});
+		btnCas.setBounds(161, 58, 169, 25);
+		contentPane.add(btnCas);
 	}
 }

@@ -2,8 +2,11 @@ package controllers;
 
 import java.awt.Point;
 
+import dominio.BoardMember;
+import dominio.Technician;
 import dominio.Voter;
 import exceptions.UserAlreadyExists;
+import exceptions.UserNotFound;
 
 public class RegisterController {
 	
@@ -15,13 +18,13 @@ public class RegisterController {
 		if(Voter.voters.contains(newVoter))
 			throw new UserAlreadyExists();
 		
-		
-		
-		
-		
 		Voter.voters.add(newVoter);
 		
 		return newVoter;
+	}
+	
+	public static BoardMember createMember(int id, Technician tech) throws UserNotFound {
+		return BoardMember.createMember(id, tech);
 	}
 	
 	

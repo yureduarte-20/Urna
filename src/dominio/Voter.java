@@ -18,6 +18,18 @@ public class Voter implements Comparable<Voter>{
 		this.name = name;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
 	@Override
 	public int compareTo(Voter other) {
 		if(this.id == other.id && this.password.equals(other.password))

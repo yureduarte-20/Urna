@@ -90,11 +90,10 @@ public class Main extends JFrame {
 				
 				try {
 					Technician tec = Autenticator.auth.validate( Integer.parseInt( textField.getText() ) , passwordField.getText() );
-					
+					Autenticator.authenticatedTechnician = tec;
 
 					dispose();
 					new TechnicalInterface().setVisible(true);
-								
 					
 				} catch (NumberFormatException error) {
 					JOptionPane.showMessageDialog(null, "Por favor digite uma senha no campo \"Número de indentificação\"");
