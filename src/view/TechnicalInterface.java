@@ -64,7 +64,7 @@ public class TechnicalInterface extends JFrame {
 				new DeleteVoter().setVisible(true);
 			}
 		});
-		btnDeletarEleitor.setBounds(161, 160, 185, 25);
+		btnDeletarEleitor.setBounds(161, 197, 185, 25);
 		contentPane.add(btnDeletarEleitor);
 		
 		JButton btnMontarChapa = new JButton("Cadastrar Partido");
@@ -87,5 +87,15 @@ public class TechnicalInterface extends JFrame {
 		});
 		btnSair.setBounds(450, 0, 62, 25);
 		contentPane.add(btnSair);
+		
+		JButton registerTech = new JButton("Cadastrar Técnico");
+		registerTech.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RegisterTechnician().setVisible(true);
+			}
+		});
+		registerTech.setBounds(161, 160, 185, 25);
+		contentPane.add(registerTech);
 	}
 }
