@@ -94,4 +94,6 @@ public class Voter implements Comparable<Voter>{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
 }

@@ -28,12 +28,13 @@ public class Seeders {
 		if(!Voter.voters.isEmpty()) return;
 		try {
 			
-			RegisterController.registerVoter( 1, "Ramon delas", "Ramon", new Point(1, 324) );
-			RegisterController.registerVoter(2, "Yure", "Yure"   , new Point(2, 124)) ;
+			RegisterController.registerVoter( 1, "ramon", "Ramon", new Point(1, 324) );
+			RegisterController.registerVoter(2, "yure", "Yure"   , new Point(2, 124)) ;
 			RegisterController.registerVoter(3, "Savin", "Savio"  , new Point(5, 43))  ;
 			RegisterController.registerVoter(4, "Jonny", "Jhoni"  , new Point(5, 234)) ;
 			RegisterController.registerVoter(5, "Chefe Lincoln", "Lincoln", new Point(63, 41)) ;
 			RegisterController.registerVoter(6, "Lucas", "Lucas"  , new Point(3, 56)) ;
+			System.out.println("Seed Criada com sucesso");
 		}catch(Exception ex) {
 			ex.printStackTrace();
 			System.out.println("Falha ao criar o seed de eleitores");

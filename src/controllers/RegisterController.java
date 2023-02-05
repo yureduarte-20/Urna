@@ -112,4 +112,8 @@ public class RegisterController {
 		ElectoralPlate.getElectoralPlate().add(el);
 		return el;
 	}
+	
+	public static void saveVote() {
+		
+	}
 }

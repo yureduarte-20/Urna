@@ -25,11 +25,11 @@ public class Zone {
 	public static List<Zone> zones = new ArrayList<>();
 
 	public static void addZone(Zone zone) throws ZoneAlreadyExists {
-		for(var _zone : Zone.zones) {
-			if(zone.getZoneNumber() == _zone.getZoneNumber())
-				throw new ZoneAlreadyExists();
-			
-		}
+//		for(var _zone : Zone.zones) {
+//			if(zone.getZoneNumber() == _zone.getZoneNumber())
+//				throw new ZoneAlreadyExists();
+//			
+//		}
 		zones.add(zone);
 	}
 	public static Zone getZone(int zoneId) throws ZoneNotFound{

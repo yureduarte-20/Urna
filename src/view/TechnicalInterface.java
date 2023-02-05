@@ -133,7 +133,7 @@ public class TechnicalInterface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				Autenticator.authenticatedTechnician = null;
-				new Main().setVisible(true);
+				new TechnicianLogin().setVisible(true);
 			}
 		});
 		

@@ -17,10 +17,11 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.Autenticator;
 import dominio.Technician;
+import dominio.Voter;
 import exceptions.UserNotFound;
 import seeders.Seeders;
 
-public class Main extends JFrame {
+public class VoterLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,24 +30,18 @@ public class Main extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Main frame = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { Main frame = new Main();
+	 * frame.setVisible(true); } catch (Exception e) { e.printStackTrace(); } } });
+	 * }
+	 */
 
 	/**
 	 * Create the frame.
 	 */
-	public Main() {
-		Seeders.insertValues();
+	public VoterLogin() {
+		
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,18 +80,17 @@ public class Main extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Technician.technical.add( new Technician(123, "ramon") );
 				
 				try {
-					Technician tec = Autenticator.auth.validate( Integer.parseInt( textField.getText() ) , passwordField.getText() );
-					Autenticator.authenticatedTechnician = tec;
+					Voter tec = Autenticator.auth.validateVoter( Integer.parseInt( textField.getText() ) , passwordField.getText() );
+					Autenticator.authenticatedVoter = tec;
 
 					dispose();
-					new TechnicalInterface().setVisible(true);
+					new VoterInterface().setVisible(true);
 					
 				} catch (NumberFormatException error) {
 					JOptionPane.showMessageDialog(null, "Por favor digite uma senha no campo \"Número de indentificação\"");
-				} catch (UserNotFound error) {
+				} catch (Exception error) {
 					JOptionPane.showMessageDialog(null, error.getMessage());
 				}
 				

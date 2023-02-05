@@ -39,5 +39,8 @@ public class BoardMember extends Voter{
 		return member;
 	}
 	
+	public static List<BoardMember>  getMembers(){
+		return members;
+	}
 	
 }
