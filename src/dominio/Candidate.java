@@ -1,12 +1,10 @@
 package dominio;
 
 import java.awt.Point;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.NotEligible;
-import exceptions.UserAlreadyExists;
 import exceptions.UserNotFound;
 
 public class Candidate extends Voter{

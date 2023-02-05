@@ -8,6 +8,15 @@ public class Technician implements Comparable<Technician>{
 	public static final List<Technician> technical = new ArrayList<>();
 	
 	private int id;
+	private String email;
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private String password;
 	
 	public Technician(int id, String password) {
