@@ -20,7 +20,7 @@ public class TechnicalInterface extends JFrame {
 	 */
 	public TechnicalInterface() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 552, 466);
+		setBounds(100, 100, 553, 489);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -148,5 +148,15 @@ public class TechnicalInterface extends JFrame {
 		contentPane.add(btnCadastroChapa);
 		btnSair.setBounds(467, 12, 62, 25);
 		contentPane.add(btnSair);
+		
+		JButton btnNewButton_1 = new JButton("Editar Eleitor");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new EditVoter().setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_1.setBounds(161, 414, 185, 25);
+		contentPane.add(btnNewButton_1);
 	}
 }

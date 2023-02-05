@@ -4,11 +4,14 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.UserNotFound;
+
 public class Voter implements Comparable<Voter>{
 
 	public static final List<Voter> voters = new ArrayList<>();
 	public static int count = 0;
 	private int id;
+
 	private String password;
 	private String name;
 	private Session session;
@@ -71,5 +74,24 @@ public class Voter implements Comparable<Voter>{
 	
 	public void setPoint(Point point) {
 		this.point = point;
+	}
+	public static Voter getVoter(int id) throws UserNotFound {
+		for(var voter : Voter.voters) {
+			if(voter.getId() == id) {
+				return voter;
+			}
+		}
+		throw new UserNotFound();
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

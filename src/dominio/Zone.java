@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import exceptions.SessionAlreadyExists;
+import exceptions.ZoneAlreadyExists;
 import exceptions.ZoneNotFound;
 
 public class Zone {
@@ -23,7 +24,12 @@ public class Zone {
 
 	public static List<Zone> zones = new ArrayList<>();
 
-	public static void addZone(Zone zone) {
+	public static void addZone(Zone zone) throws ZoneAlreadyExists {
+		for(var _zone : Zone.zones) {
+			if(zone.getZoneNumber() == _zone.getZoneNumber())
+				throw new ZoneAlreadyExists();
+			
+		}
 		zones.add(zone);
 	}
 	public static Zone getZone(int zoneId) throws ZoneNotFound{

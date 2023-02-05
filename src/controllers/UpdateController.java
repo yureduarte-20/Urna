@@ -61,5 +61,23 @@ public class UpdateController {
 		throw new SessionNotFound();
 	}
 	
+	
+	public static Voter getVoter(int id) throws UserNotFound {
+		for(var voter : Voter.voters) {
+			if(voter.getId() == id)
+				return voter;
+		}
+		throw new UserNotFound();
+	}
+	public static Voter updateVoter(int id, String name, String password, Point point) throws UserNotFound {
+		var voter = Voter.getVoter(id);
+		voter.setPoint(point);
+		voter.setPassword(password);
+		voter.setName(name);
+		var zone = Zone.selectBestZone(point);
+		voter.setSession(Session.selectBestSession(zone, point));
+		return voter;
+	}
+	
  }
 
