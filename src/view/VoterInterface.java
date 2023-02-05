@@ -5,15 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import controllers.Autenticator;
-import controllers.MemberController;
 
-public class MemberInterface extends JFrame {
+public class VoterInterface extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -21,27 +19,25 @@ public class MemberInterface extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MemberInterface() {
+	public VoterInterface() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setBounds(100, 100, 512, 360);
+		setBounds(100, 100, 356, 225);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 
 		setContentPane(contentPane);
 
-		JButton btnNewButton = new JButton("Imprimir Candidatos");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnMontarChapa = new JButton("Votar");
+		btnMontarChapa.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-
-				JOptionPane.showMessageDialog(null, MemberController.printCandidates());
-
+				dispose();
+				new SelectResource().setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(161, 12, 185, 25);
-		contentPane.add(btnNewButton);
+		btnMontarChapa.setBounds(80, 77, 185, 25);
+		contentPane.add(btnMontarChapa);
 
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
@@ -52,7 +48,7 @@ public class MemberInterface extends JFrame {
 				new SelectResource().setVisible(true);
 			}
 		});
-		btnSair.setBounds(450, 0, 62, 25);
+		btnSair.setBounds(272, 12, 62, 25);
 		contentPane.add(btnSair);
 	}
 }

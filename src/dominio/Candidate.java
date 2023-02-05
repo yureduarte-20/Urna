@@ -1,27 +1,25 @@
 package dominio;
 
 import java.awt.Point;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.NotEligible;
-import exceptions.UserAlreadyExists;
 import exceptions.UserNotFound;
 
 public class Candidate extends Voter{
-	
-	private static List<Candidate> candidates = new ArrayList<>(); 
-	
+
+	private static List<Candidate> candidates = new ArrayList<>();
+
 	private String fictitiousName;
 	private Party party;
-	
+
 	public Candidate(int id, String password, String name, String fictitiousName, Point loc, Party party) {
 		super(id, password, name, loc);
 		this.fictitiousName = fictitiousName;
 		this.party = party;
 	}
-	
+
 	public Candidate(Voter voter, String fictitiousName, Party party) {
 		super(voter.getId(), voter.getPassword(), voter.getName(), voter.getPoint());
 		this.fictitiousName = fictitiousName;
@@ -30,7 +28,7 @@ public class Candidate extends Voter{
 
 	public static Candidate createCandidate(int id, Technician tech, String fictitiousName, Party party) throws UserNotFound, NotEligible  {
 		Voter voter = null;
-		
+
 		for(Voter _voter: Voter.voters) {
 			if(_voter.getId() == id)
 				voter = _voter;
@@ -40,17 +38,17 @@ public class Candidate extends Voter{
 			throw new UserNotFound();
 		if(!voter.isEligible())
 			throw new NotEligible();
-		
+
 		Candidate candidate = new Candidate(voter, fictitiousName, party);
 		candidates.add(candidate);
-		
+
 		return candidate;
 	}
-	
+
 	public static List<Candidate> getCandidates() {
 		return candidates;
 	}
-	
+
 	public Party getParty() {
 		return party;
 	}
@@ -69,7 +67,16 @@ public class Candidate extends Voter{
 
 	@Override
 	public String toString() {
-		return String.format("{id: %d, password: %s, name: %s, fictitious_name: %s, party: %s}", getId(), getPassword(), getName(), fictitiousName, party); 
+		return String.format("{id: %d, password: %s, name: %s, fictitious_name: %s, party: %s}", getId(), getPassword(), getName(), fictitiousName, party);
 	}
-	
+
+	public static Candidate getCandidate(int id) throws UserNotFound {
+		for( var candidate : Candidate.candidates) {
+			if(candidate.getId() == id) {
+				return candidate;
+			}
+		}
+		throw new UserNotFound();
+	}
+
 }

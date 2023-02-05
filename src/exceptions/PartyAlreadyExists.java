@@ -7,5 +7,5 @@ public class PartyAlreadyExists extends Exception{
 	public PartyAlreadyExists() {
 		super("O Partido já foi cadastrado");
 	}
-	
+
 }

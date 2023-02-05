@@ -7,5 +7,5 @@ public class ZoneNotFound extends Exception{
 	public ZoneNotFound() {
 		super("Zona não encontrada.");
 	}
-	
+
 }

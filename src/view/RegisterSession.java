@@ -10,35 +10,36 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import controllers.RegisterController;
+import dominio.Session;
 
-public class RegisterVoter extends JFrame {
+public class RegisterSession extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField passwordField;
 	private RegisterController registerController = new RegisterController();
 	/**
 	 * Create the frame.
 	 */
-	public RegisterVoter() {
+	public RegisterSession() {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setBounds(100, 100, 401, 451);
+		setBounds(100, 100, 389, 412);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 
 		setContentPane(contentPane);
 
-		JLabel lblCadastroDoEleitor = new JLabel("Cadastro de Eleitor");
-		lblCadastroDoEleitor.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblCadastroDoEleitor.setBounds(95, 12, 177, 21);
-		contentPane.add(lblCadastroDoEleitor);
+		JLabel lblCadastroDoTech = new JLabel("Cadastro do Sessão");
+		lblCadastroDoTech.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCadastroDoTech.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblCadastroDoTech.setBounds(96, 12, 182, 21);
+		contentPane.add(lblCadastroDoTech);
 
 		JTextPane inputNumRegister = new JTextPane();
 		inputNumRegister.setBounds(50, 86, 288, 30);
@@ -48,45 +49,9 @@ public class RegisterVoter extends JFrame {
 		lblNmeroDeCadastro.setBounds(50, 71, 159, 15);
 		contentPane.add(lblNmeroDeCadastro);
 
-		JTextPane name = new JTextPane();
-		name.setBounds(50, 143, 288, 30);
-		contentPane.add(name);
-
-		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(50, 127, 159, 15);
-		contentPane.add(lblNome);
-
-		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(50, 182, 159, 15);
-		contentPane.add(lblSenha);
-
-		passwordField = new JPasswordField();
-		passwordField.setBounds(50, 196, 288, 30);
-		contentPane.add(passwordField);
-
 
 		btnCadastrar.setBounds(131, 330, 117, 25);
 		contentPane.add(btnCadastrar);
-
-		JLabel lblGeolocalizao = new JLabel("Geolocalização");
-		lblGeolocalizao.setBounds(50, 238, 159, 15);
-		contentPane.add(lblGeolocalizao);
-
-		JTextPane inputX = new JTextPane();
-		inputX.setBounds(50, 278, 137, 30);
-		contentPane.add(inputX);
-
-		JTextPane inputY = new JTextPane();
-		inputY.setBounds(199, 278, 139, 30);
-		contentPane.add(inputY);
-
-		JLabel lblX = new JLabel("X");
-		lblX.setBounds(112, 261, 38, 15);
-		contentPane.add(lblX);
-
-		JLabel lblY = new JLabel("Y");
-		lblY.setBounds(262, 261, 38, 15);
-		contentPane.add(lblY);
 
 		JButton btnSair = new JButton("Voltar");
 		btnSair.addActionListener(new ActionListener() {
@@ -99,29 +64,54 @@ public class RegisterVoter extends JFrame {
 		btnSair.setBounds(305, 0, 84, 25);
 		contentPane.add(btnSair);
 
+		JLabel lblX = new JLabel("X");
+		lblX.setBounds(112, 229, 38, 15);
+		contentPane.add(lblX);
+
+		JLabel lblGeolocalizao = new JLabel("Geolocalização");
+		lblGeolocalizao.setBounds(50, 206, 159, 15);
+		contentPane.add(lblGeolocalizao);
+
+		JTextPane inputX = new JTextPane();
+		inputX.setBounds(50, 246, 137, 30);
+		contentPane.add(inputX);
+
+		JTextPane inputY = new JTextPane();
+		inputY.setBounds(199, 246, 139, 30);
+		contentPane.add(inputY);
+
+		JLabel lblY = new JLabel("Y");
+		lblY.setBounds(262, 229, 38, 15);
+		contentPane.add(lblY);
+
+		JLabel lblNmeroDaZona = new JLabel("Número da Zona");
+		lblNmeroDaZona.setBounds(50, 128, 159, 15);
+		contentPane.add(lblNmeroDaZona);
+
+		JTextPane inputNumRegisterZone = new JTextPane();
+		inputNumRegisterZone.setBounds(50, 143, 288, 30);
+		contentPane.add(inputNumRegisterZone);
+
 
 
 		btnCadastrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e)  {
 				int id = Integer.parseInt(inputNumRegister.getText());
+				int zoneId = Integer.parseInt(inputNumRegisterZone.getText());
 				int x = Integer.parseInt(inputX.getText());
 				int y = Integer.parseInt(inputY.getText());
-				//var voter = new Voter(Voter.count++, passwordField.getText(), getName(), new Point(x, y));
-				try {
-					RegisterController.registerVoter(id, passwordField.getText(), name.getText(), new Point(x, y));
-					JOptionPane.showMessageDialog(null, "Criado com sucesso!");
 
+				try {
+					var session = new Session(id, new Point( x, y ));
+					RegisterController.saveSession(zoneId, session);
 					dispose();
 					new TechnicalInterface().setVisible(true);
-
 				} catch (Exception e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
-				//int y = Integer.parseInt(getWarningString())
-				//RegisterController.registerVoter();
-				//Technician.technical.add( new Technician( Integer.parseInt( inputNumRegister.getText() ) , passwordField.getText()) );
+
 
 			}
 		});

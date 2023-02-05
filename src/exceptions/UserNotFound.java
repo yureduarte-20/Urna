@@ -7,5 +7,5 @@ public class UserNotFound extends Exception{
 	public UserNotFound() {
 		super("Usuário não encontrado");
 	}
-	
+
 }

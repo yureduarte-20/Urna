@@ -12,19 +12,18 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
-import controllers.VoterController;
-import dominio.Voter;
-import exceptions.UserNotFound;
+import controllers.DeleteController;
 
-public class DeleteVoter extends JFrame {
+public class DeleteSession extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField inputZonaId;
+	private JTextField inputSessaoId;
 
 	/**
 	 * Create the frame.
 	 */
-	public DeleteVoter() {
+	public DeleteSession() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 467, 244);
 		contentPane = new JPanel();
@@ -35,31 +34,32 @@ public class DeleteVoter extends JFrame {
 
 		setContentPane(contentPane);
 
-		textField = new JTextField();
-		textField.setBounds(131, 99, 190, 32);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		inputZonaId = new JTextField();
+		inputZonaId.setBounds(129, 70, 190, 32);
+		contentPane.add(inputZonaId);
+		inputZonaId.setColumns(10);
 
-		JLabel lblInsiraAsInformaes = new JLabel("Digite o número do eleitor que queira deletar");
-		lblInsiraAsInformaes.setBounds(65, 27, 342, 15);
+		JLabel lblInsiraAsInformaes = new JLabel("Digite o número da sessão que você deseja deletar");
+		lblInsiraAsInformaes.setBounds(53, 37, 373, 15);
 		contentPane.add(lblInsiraAsInformaes);
 
-		JLabel lblNmeroDoEleito = new JLabel("Número do Eleitor");
-		lblNmeroDoEleito.setBounds(131, 83, 137, 15);
+		JLabel lblNmeroDoEleito = new JLabel("Número da Zona");
+		lblNmeroDoEleito.setBounds(129, 54, 137, 15);
 		contentPane.add(lblNmeroDoEleito);
 
 		JButton btnCadastro = new JButton("Deletar");
 		btnCadastro.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String numberVoter = textField.getText();
 				try {
-					Voter voter = VoterController.getById( Integer.parseInt(numberVoter) );
-					Voter.voters.remove(voter);
-
-					JOptionPane.showMessageDialog(null, "Eleitor deletado com sucesso!");
-				} catch(UserNotFound e1) {
-					JOptionPane.showMessageDialog(null, "O eleitor não foi encontrado. Confirme o número do eleitor.");
+					int zoneId = Integer.parseInt(inputZonaId.getText()) ;
+					int sesseionId = Integer.parseInt(inputSessaoId.getText()) ;
+					DeleteController.deleteSessionInZone(zoneId, sesseionId);
+					JOptionPane.showMessageDialog(null, "Sessão deletada com sucesso");
+					dispose();
+					new TechnicalInterface().setVisible(true);
+				} catch(Exception e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
 
 			}
@@ -77,5 +77,14 @@ public class DeleteVoter extends JFrame {
 		});
 		btnVoltar.setBounds(380, 0, 77, 25);
 		contentPane.add(btnVoltar);
+
+		inputSessaoId = new JTextField();
+		inputSessaoId.setColumns(10);
+		inputSessaoId.setBounds(129, 133, 190, 32);
+		contentPane.add(inputSessaoId);
+
+		JLabel lblNmeroDoSesso = new JLabel("Número do Sessão");
+		lblNmeroDoSesso.setBounds(129, 117, 137, 15);
+		contentPane.add(lblNmeroDoSesso);
 	}
 }

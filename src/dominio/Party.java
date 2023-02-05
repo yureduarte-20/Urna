@@ -3,22 +3,20 @@ package dominio;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 public class Party implements Comparable<Party>{
 
 	public static List<Party> parties = new ArrayList<>();
-	
+
 	private String name;
 	private String acronym;
 	private int number;
-	
+
 	public Party(String name, String sigla, int number) {
 		this.name = name;
 		this.acronym = sigla;
 		this.number = number;
 	}
-	
+
 	public static List<Party> getParties() {
 		return parties;
 	}
@@ -55,16 +53,16 @@ public class Party implements Comparable<Party>{
 	public int compareTo(Party o) {
 		return o.number - this.number;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		Party party = (Party) o;
 		return party.number == this.number;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("name: %s, sigla: %s, number: %d", name, acronym, number);
 	}
-	
+
 }

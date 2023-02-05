@@ -2,16 +2,15 @@ package controllers;
 
 import java.util.List;
 
-import dominio.BoardMember;
 import dominio.Candidate;
 
 public class MemberController {
-	
+
 	public static String printCandidates() {
 		List<Candidate> candidates = Candidate.getCandidates();
-		
+
 		StringBuilder result = new StringBuilder();
-		
+
 		int counter = 0;
 		for(Candidate candidate: candidates) {
 			counter++;
@@ -22,10 +21,10 @@ public class MemberController {
 			result.append( "\n\tPartido: " + candidate.getParty().getAcronym() + "\n");
 			result.append("===================================\n");
 		}
-		
+
 		return result.toString();
 	}
-	
-	
-	
+
+
+
 }

@@ -9,6 +9,7 @@ import dominio.Zone;
 import exceptions.PartyAlreadyExists;
 import exceptions.SessionAlreadyExists;
 import exceptions.UserAlreadyExists;
+import exceptions.ZoneAlreadyExists;
 
 public class Seeders {
 
@@ -21,11 +22,11 @@ public class Seeders {
 		insertCandidates();
 		insertMember();
 	}
-	
-	
+
+
 	private static void insertMember() {
-		Technician tec = Technician.technical.get(0); 
-		
+		Technician tec = Technician.technical.get(0);
+
 		try {
 			RegisterController.createMember(2, tec);
 			RegisterController.createMember(3, tec);
@@ -36,12 +37,16 @@ public class Seeders {
 
 
 	private static void insertZone() {
-		Zone.addZone( new Zone(new Point(1, 1)) );
+		try {
+			Zone.addZone( new Zone( 1, new Point(1, 1) ) );
+		} catch (ZoneAlreadyExists e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	private static void insertSession() {
 		try {
-			Zone.getZones().get(0).addSession( new Session(1, new Point(2, 2)) );
+			Zone.zones.get(0).addSession( new Session(1, new Point(2, 2)) );
 		} catch (SessionAlreadyExists e) {
 			e.printStackTrace();
 		}
@@ -58,8 +63,8 @@ public class Seeders {
 
 
 	private static void insertCandidates() {
-		Technician tec = Technician.technical.get(0); 
-		
+		Technician tec = Technician.technical.get(0);
+
 		try {
 			RegisterController.saveCandidate(1, tec, "Ramon Fictício", 100);
 			RegisterController.saveCandidate(6, tec, "Ramon Fictício2", 100);
@@ -71,6 +76,7 @@ public class Seeders {
 
 
 	private static void insertTechnical() {
+		if(!Technician.technical.isEmpty()) return;
 		Technician.technical.add( new Technician(123, "ramon") );
 		Technician.technical.add( new Technician(12, "yure") );
 	}
@@ -87,5 +93,5 @@ public class Seeders {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

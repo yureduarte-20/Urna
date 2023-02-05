@@ -7,5 +7,5 @@ public class UserAlreadyExists extends Exception{
 	public UserAlreadyExists() {
 		super("O usuário já foi cadastrado");
 	}
-	
+
 }

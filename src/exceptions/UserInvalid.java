@@ -7,5 +7,5 @@ public class UserInvalid extends Exception{
 	public UserInvalid() {
 		super("Usuário e/ou senha inválido(s)");
 	}
-	
+
 }

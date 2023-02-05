@@ -7,5 +7,8 @@ public class SessionNotFound extends Exception{
 	public SessionNotFound() {
 		super("Sessão não encontrada.");
 	}
-	
+	public SessionNotFound(String msg) {
+		super(msg);
+	}
+
 }

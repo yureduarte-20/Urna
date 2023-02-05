@@ -7,5 +7,5 @@ public class PartyNotFound extends Exception{
 	public PartyNotFound() {
 		super("O Partido não foi encontrado");
 	}
-	
+
 }

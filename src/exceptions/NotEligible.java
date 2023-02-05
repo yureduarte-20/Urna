@@ -7,5 +7,5 @@ public class NotEligible extends Exception{
 	public NotEligible() {
 		super("O eleitor não está elegível!");
 	}
-	
+
 }
