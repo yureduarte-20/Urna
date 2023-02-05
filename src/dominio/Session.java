@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
+import exceptions.SessionNotFound;
+import exceptions.ZoneNotFound;
+
 public class Session {
 
 	public Session(int sessionNumber, Point address) {
@@ -63,4 +66,5 @@ public class Session {
 			}
 		});
 	}
+	
 }

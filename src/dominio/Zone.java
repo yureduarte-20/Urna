@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import exceptions.SessionAlreadyExists;
+import exceptions.ZoneNotFound;
 
 public class Zone {
 	private static int count = 0;
@@ -14,22 +15,28 @@ public class Zone {
 	private Point address = new Point();
 	private List<Session> sessions = new ArrayList<>();
 
-	public Zone(Point address) {
+	public Zone(int zoneNumber,Point address) {
 		super();
+		this.zoneNumber = zoneNumber;
 		this.address = address;
 	}
 
 	public static List<Zone> zones = new ArrayList<>();
 
-	public static Zone bestZoneAvailable(Point point) {
-		return null;
-	}
-
 	public static void addZone(Zone zone) {
-		zone.setZoneNumber(count++);
 		zones.add(zone);
 	}
-
+	public static Zone getZone(int zoneId) throws ZoneNotFound{
+		for(var zone : Zone.zones) {
+			if(zone.getZoneNumber() == zoneId) {
+				return zone;
+			}
+		}
+		throw new ZoneNotFound();
+	}
+	
+	
+	
 	public void addSession(Session session) throws SessionAlreadyExists {
 		for (Session _session : this.sessions) {
 			if (_session.getSessionNumber() == session.getSessionNumber())

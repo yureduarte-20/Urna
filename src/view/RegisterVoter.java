@@ -116,8 +116,8 @@ public class RegisterVoter extends JFrame {
 				//var voter = new Voter(Voter.count++, passwordField.getText(), getName(), new Point(x, y));
 				try {
 					if(Zone.zones.size() <=0) {
-						var z =  new Zone( new Point(1, 2));
-						var z2 = new Zone(new Point(7,8));
+						var z =  new Zone(1, new Point(1, 2));
+						var z2 = new Zone(2,new Point(7,8));
 						var s1 = new Session(1 , new Point(2,3));
 						var s2 = new Session(2 , new Point(7,3));
 						z.addSession(s1);

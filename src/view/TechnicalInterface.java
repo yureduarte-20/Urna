@@ -20,7 +20,7 @@ public class TechnicalInterface extends JFrame {
 	 */
 	public TechnicalInterface() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 512, 360);
+		setBounds(100, 100, 531, 418);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -64,7 +64,7 @@ public class TechnicalInterface extends JFrame {
 				new DeleteVoter().setVisible(true);
 			}
 		});
-		btnDeletarEleitor.setBounds(161, 197, 185, 25);
+		btnDeletarEleitor.setBounds(161, 271, 185, 25);
 		contentPane.add(btnDeletarEleitor);
 		
 		JButton btnMontarChapa = new JButton("Cadastrar Partido");
@@ -97,5 +97,46 @@ public class TechnicalInterface extends JFrame {
 		});
 		registerTech.setBounds(161, 160, 185, 25);
 		contentPane.add(registerTech);
+		
+		JButton btnCadastrarSesso = new JButton("Cadastrar Sessão");
+		btnCadastrarSesso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new RegisterSession().setVisible(true);
+				dispose();
+			}
+		});
+		btnCadastrarSesso.setBounds(161, 197, 185, 25);
+		contentPane.add(btnCadastrarSesso);
+		
+		JButton btnCadastrarZona = new JButton("Cadastrar Zona");
+		btnCadastrarZona.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RegisterZone().setVisible(true);
+			}
+		});
+		
+		btnCadastrarZona.setBounds(161, 234, 185, 25);
+		contentPane.add(btnCadastrarZona);
+		
+		JButton btnEditarSesso = new JButton("Editar Sessão");
+		btnEditarSesso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new EditSession().setVisible(true);
+			}
+		});
+		btnEditarSesso.setBounds(161, 307, 185, 25);
+		contentPane.add(btnEditarSesso);
+		
+		JButton btnExcluirSesso = new JButton("Deletar Sessão");
+		btnExcluirSesso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new DeleteSession().setVisible(true);
+			}
+		});
+		btnExcluirSesso.setBounds(161, 344, 185, 25);
+		contentPane.add(btnExcluirSesso);
 	}
 }

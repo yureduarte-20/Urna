@@ -13,8 +13,12 @@ import dominio.Zone;
 import exceptions.NotEligible;
 import exceptions.PartyAlreadyExists;
 import exceptions.PartyNotFound;
+import exceptions.SessionAlreadyExists;
+import exceptions.SessionNotFound;
 import exceptions.UserAlreadyExists;
 import exceptions.UserNotFound;
+import exceptions.ZoneAlreadyExists;
+import exceptions.ZoneNotFound;
 
 
 public class RegisterController {
@@ -71,6 +75,31 @@ public class RegisterController {
 		}
 		Technician.technical.add(tech);
 		return tech;
+	}
+	
+	public static Session saveSession(int zoneNumber, Session session) throws ZoneNotFound, SessionAlreadyExists {
+		Zone target = null;
+		for(var zone : Zone.zones) {
+			if(zone.getZoneNumber() == zoneNumber) {
+				target = zone;
+				break;
+			}	
+		}
+		if(target == null)
+			throw new ZoneNotFound();
+		target.addSession(session);
+		return session;
+	}
+	
+	
+	public static Zone saveZone(Zone zone) throws ZoneAlreadyExists {
+		for(var _zone : Zone.zones) {
+			if(_zone.getZoneNumber() == zone.getZoneNumber()) {
+				throw new ZoneAlreadyExists();
+			}
+		}
+		Zone.zones.add(zone);
+		return zone;
 	}
 	
 }
