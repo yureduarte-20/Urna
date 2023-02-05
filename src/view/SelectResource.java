@@ -64,7 +64,7 @@ public class SelectResource extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new TechnicalInterface().setVisible(true);
+				new TechnicianLogin().setVisible(true);
 			}
 		});
 		btnTcnico.setBounds(209, 86, 117, 25);

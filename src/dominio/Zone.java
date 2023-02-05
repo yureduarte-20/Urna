@@ -28,7 +28,6 @@ public class Zone {
 		for(var _zone : Zone.zones) {
 			if(zone.getZoneNumber() == _zone.getZoneNumber())
 				throw new ZoneAlreadyExists();
-
 		}
 		zones.add(zone);
 	}

@@ -20,8 +20,8 @@ public class TechnicalInterface extends JFrame {
 	 * Create the frame.
 	 */
 	public TechnicalInterface() {
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setBounds(100, 100, 553, 489);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 612, 697);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
@@ -36,7 +36,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterVoter().setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(161, 12, 185, 25);
+		btnNewButton.setBounds(164, 180, 185, 25);
 		contentPane.add(btnNewButton);
 
 		JButton btnCas = new JButton("Cadastro Mesário");
@@ -47,7 +47,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterBoardMember().setVisible(true);
 			}
 		});
-		btnCas.setBounds(161, 82, 185, 25);
+		btnCas.setBounds(164, 250, 185, 25);
 		contentPane.add(btnCas);
 
 		JButton btnCadastro = new JButton("Cadastro Candidato");
@@ -58,7 +58,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterCandidate().setVisible(true);
 			}
 		});
-		btnCadastro.setBounds(161, 119, 185, 25);
+		btnCadastro.setBounds(164, 287, 185, 25);
 		contentPane.add(btnCadastro);
 
 		JButton btnDeletarEleitor = new JButton("Deletar Eleitor");
@@ -69,7 +69,7 @@ public class TechnicalInterface extends JFrame {
 				new DeleteVoter().setVisible(true);
 			}
 		});
-		btnDeletarEleitor.setBounds(161, 304, 185, 25);
+		btnDeletarEleitor.setBounds(164, 472, 185, 25);
 		contentPane.add(btnDeletarEleitor);
 
 		JButton btnMontarChapa = new JButton("Cadastrar Partido");
@@ -80,7 +80,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterParty().setVisible(true);
 			}
 		});
-		btnMontarChapa.setBounds(161, 156, 185, 25);
+		btnMontarChapa.setBounds(164, 324, 185, 25);
 		contentPane.add(btnMontarChapa);
 
 		JButton registerTech = new JButton("Cadastrar Técnico");
@@ -91,7 +91,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterTechnician().setVisible(true);
 			}
 		});
-		registerTech.setBounds(161, 193, 185, 25);
+		registerTech.setBounds(164, 361, 185, 25);
 		contentPane.add(registerTech);
 
 		JButton btnCadastrarSesso = new JButton("Cadastrar Sessão");
@@ -102,7 +102,7 @@ public class TechnicalInterface extends JFrame {
 				dispose();
 			}
 		});
-		btnCadastrarSesso.setBounds(161, 230, 185, 25);
+		btnCadastrarSesso.setBounds(164, 398, 185, 25);
 		contentPane.add(btnCadastrarSesso);
 
 		JButton btnCadastrarZona = new JButton("Cadastrar Zona");
@@ -113,8 +113,8 @@ public class TechnicalInterface extends JFrame {
 				new RegisterZone().setVisible(true);
 			}
 		});
-
-		btnCadastrarZona.setBounds(161, 267, 185, 25);
+		
+		btnCadastrarZona.setBounds(164, 435, 185, 25);
 		contentPane.add(btnCadastrarZona);
 
 		JButton btnEditarSesso = new JButton("Editar Sessão");
@@ -125,7 +125,7 @@ public class TechnicalInterface extends JFrame {
 				new EditSession().setVisible(true);
 			}
 		});
-		btnEditarSesso.setBounds(161, 340, 185, 25);
+		btnEditarSesso.setBounds(164, 508, 185, 25);
 		contentPane.add(btnEditarSesso);
 
 		JButton btnExcluirSesso = new JButton("Deletar Sessão");
@@ -136,7 +136,7 @@ public class TechnicalInterface extends JFrame {
 				new DeleteSession().setVisible(true);
 			}
 		});
-		btnExcluirSesso.setBounds(161, 377, 185, 25);
+		btnExcluirSesso.setBounds(164, 545, 185, 25);
 		contentPane.add(btnExcluirSesso);
 
 		JButton btnSair = new JButton("Sair");
@@ -157,7 +157,7 @@ public class TechnicalInterface extends JFrame {
 				new RegisterElectoralPlate().setVisible(true);
 			}
 		});
-		btnCadastroChapa.setBounds(161, 45, 185, 25);
+		btnCadastroChapa.setBounds(164, 213, 185, 25);
 		contentPane.add(btnCadastroChapa);
 		btnSair.setBounds(467, 12, 62, 25);
 		contentPane.add(btnSair);
@@ -170,7 +170,35 @@ public class TechnicalInterface extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(161, 414, 185, 25);
+		btnNewButton_1.setBounds(164, 582, 185, 25);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnCadastrarTurno = new JButton("Cadastrar Turno");
+		btnCadastrarTurno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new RegisterShift().setVisible(true);
+				dispose();
+			}
+		});
+		btnCadastrarTurno.setBounds(164, 75, 185, 25);
+		contentPane.add(btnCadastrarTurno);
+		
+		JButton btnCadastrarEleio = new JButton("Cadastrar Eleição");
+		btnCadastrarEleio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new RegisterElection().setVisible(true);
+				dispose();
+			}
+		});
+		btnCadastrarEleio.setBounds(164, 38, 185, 25);
+		contentPane.add(btnCadastrarEleio);
+		
+		JButton btnEncerrarTurno = new JButton("Encerrar Turno");
+		btnEncerrarTurno.setBounds(164, 108, 185, 25);
+		contentPane.add(btnEncerrarTurno);
+		
+		JButton btnEncerrarEleio = new JButton("Encerrar Eleição");
+		btnEncerrarEleio.setBounds(164, 145, 185, 25);
+		contentPane.add(btnEncerrarEleio);
 	}
 }

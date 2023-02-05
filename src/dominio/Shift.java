@@ -6,7 +6,14 @@ import java.util.List;
 public class Shift {
     private String shiftIdentification;
     private List<Vote> votes = new ArrayList<>();
-    public Shift(String shiftIdentification) {
+    private boolean active = true;
+    public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	public Shift(String shiftIdentification) {
         this.shiftIdentification = shiftIdentification;
     }
     public boolean addVote(Vote vote){
