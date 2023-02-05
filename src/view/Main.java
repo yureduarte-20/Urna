@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controllers.Autenticator;
+import dominio.BoardMember;
 import dominio.Technician;
 import exceptions.UserNotFound;
 import seeders.Seeders;
@@ -93,11 +94,17 @@ public class Main extends JFrame {
 				Technician.technical.add( new Technician(123, "ramon") );
 				
 				try {
-					Technician tec = Autenticator.auth.validate( Integer.parseInt( textField.getText() ) , passwordField.getText() );
-					Autenticator.authenticatedTechnician = tec;
-
+					Object user = Autenticator.auth.validate( Integer.parseInt( textField.getText() ) , passwordField.getText() );
 					dispose();
-					new TechnicalInterface().setVisible(true);
+					
+					if(user instanceof Technician) {
+						dispose();
+						new TechnicalInterface().setVisible(true);
+						Autenticator.authenticatedTechnician = (Technician) user;
+					} else if(user instanceof BoardMember) {
+						new MemberInterface().setVisible(true);
+						Autenticator.authenticatedMember = (BoardMember) user;
+					}
 					
 				} catch (NumberFormatException error) {
 					JOptionPane.showMessageDialog(null, "Por favor digite uma senha no campo \"Número de indentificação\"");

@@ -47,6 +47,26 @@ public class Candidate extends Voter{
 		return candidate;
 	}
 	
+	public static List<Candidate> getCandidates() {
+		return candidates;
+	}
+	
+	public Party getParty() {
+		return party;
+	}
+
+	public void setParty(Party party) {
+		this.party = party;
+	}
+
+	public String getFictitiousName() {
+		return fictitiousName;
+	}
+
+	public void setFictitiousName(String fictitiousName) {
+		this.fictitiousName = fictitiousName;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("{id: %d, password: %s, name: %s, fictitious_name: %s, party: %s}", getId(), getPassword(), getName(), fictitiousName, party); 

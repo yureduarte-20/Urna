@@ -10,7 +10,7 @@ import exceptions.UserNotFound;
 
 public class BoardMember extends Voter{
 	
-	private static List<BoardMember> members = new ArrayList<>(); 
+	public static List<BoardMember> members = new ArrayList<>(); 
 	
 	
 	public BoardMember(int id, String password, String name, Point loc) {
@@ -20,7 +20,7 @@ public class BoardMember extends Voter{
 	public BoardMember(Voter voter) {
 		super(voter.getId(), voter.getPassword(), voter.getName(), voter.getPoint());
 	}
-
+	
 	public static BoardMember createMember(int id, Technician tech) throws UserNotFound  {
 		Voter voter = null;
 		
