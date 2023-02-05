@@ -3,15 +3,19 @@ package seeders;
 import java.awt.Point;
 
 import controllers.RegisterController;
+import dominio.Election;
 import dominio.Session;
+import dominio.Shift;
 import dominio.Technician;
 import dominio.Voter;
 import dominio.Zone;
+import exceptions.*;
 
 public class Seeders {
 
 	public static void insertValues() {
 		insertTechnical();
+		insertElection();
 		insertZonesAndSessions();
 		insertVoters();
 		
@@ -54,9 +58,20 @@ public class Seeders {
 			Zone.addZone(z2);
 			Zone.addZone(z3);
 			
-		}catch(Exception e) {
+		}catch(ZoneAlreadyExists | SessionAlreadyExists e) {
 			
 		}
 	}
 	
+	private static void insertElection() {
+		try {
+			var s = new Shift("2021.1");
+			var e = new Election("2021");
+			e.addShift(s);
+			Election.addElection(e );
+			System.out.println("Seed de eleção Criada com sucesso");
+		} catch(Exception e) {
+			System.out.println("Falha ao criar o seed de eleição");
+		}
+	}
 }

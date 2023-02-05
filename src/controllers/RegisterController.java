@@ -5,17 +5,26 @@ import java.util.Random;
 
 import dominio.BoardMember;
 import dominio.Candidate;
+import dominio.Election;
 import dominio.ElectoralPlate;
 import dominio.Party;
 import dominio.Session;
+import dominio.Shift;
 import dominio.Technician;
+import dominio.Vote;
 import dominio.Voter;
 import dominio.Zone;
+import exceptions.ElectionAlreadyExists;
+import exceptions.ElectionNotFound;
+import exceptions.ElectionStillActive;
 import exceptions.NotEligible;
 import exceptions.PartyAlreadyExists;
 import exceptions.PartyNotFound;
 import exceptions.SessionAlreadyExists;
 import exceptions.SessionNotFound;
+import exceptions.ShiftExceededLimit;
+import exceptions.ShiftNotFound;
+import exceptions.ShiftStillActive;
 import exceptions.UserAlreadyExists;
 import exceptions.UserNotFound;
 import exceptions.ZoneAlreadyExists;
@@ -113,7 +122,31 @@ public class RegisterController {
 		return el;
 	}
 	
-	public static void saveVote() {
+	public static void saveElection(String identification ) throws ElectionAlreadyExists, ElectionStillActive{
+		if(Election.getEletions().isEmpty()) {
+			Election e = new Election(identification);
+			Election.addElection(e);
+			return;
+		}
 		
+		for(var ele : Election.getEletions()) {
+			if(ele.isActive()) {
+				throw new ElectionStillActive();
+			}
+		}
+		Election e = new Election(identification);
+		Election.addElection(e);
 	}
+	
+	public static void saveShift(String electionId, Shift s) throws ElectionNotFound, ShiftExceededLimit, ShiftStillActive {
+		var el = Election.getElection(electionId);
+		el.addShift(s);
+	}
+	
+	public static void saveVote(Vote v) throws ElectionNotFound, ShiftNotFound {
+		var el = Election.getActiveElection();
+		var shift = el.getActiveShift();
+		shift.addVote(v);
+	}
+	
 }
