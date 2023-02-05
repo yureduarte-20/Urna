@@ -50,4 +50,13 @@ public class Candidate extends Voter{
 		return String.format("{id: %d, password: %s, name: %s, fictitious_name: %s, party: %s}", getId(), getPassword(), getName(), fictitiousName, party); 
 	}
 	
+	public static Candidate getCandidate(int id) throws UserNotFound {
+		for( var candidate : Candidate.candidates) {
+			if(candidate.getId() == id) {
+				return candidate;
+			}
+		}
+		throw new UserNotFound();
+	}
+	
 }

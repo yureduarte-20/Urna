@@ -5,6 +5,7 @@ import java.util.Random;
 
 import dominio.BoardMember;
 import dominio.Candidate;
+import dominio.ElectoralPlate;
 import dominio.Party;
 import dominio.Session;
 import dominio.Technician;
@@ -24,7 +25,7 @@ import exceptions.ZoneNotFound;
 public class RegisterController {
 	static Random generator = new Random();
 
-	public static Voter registerVoter(int id, String password, String name, Point point) throws UserAlreadyExists {
+	public static Voter registerVoter(int id, String password, String name, Point point) throws UserAlreadyExists{
 		Voter newVoter = new Voter(id, password, name, point);
 		for (var voter : Voter.voters) {
 			if (voter.getId() == newVoter.getId()) {
@@ -102,4 +103,13 @@ public class RegisterController {
 		return zone;
 	}
 	
+	public static ElectoralPlate saveEletroralPlate( int principalId, int viceId, String number ) throws UserNotFound {
+		System.out.println(Candidate.getCandidate(viceId).toString());
+		System.out.println(Candidate.getCandidate(principalId).toString());
+		var principal = Candidate.getCandidate(principalId);
+		var vice = Candidate.getCandidate(viceId);
+		var el = new ElectoralPlate(principal, vice, number);
+		ElectoralPlate.getElectoralPlate().add(el);
+		return el;
+	}
 }

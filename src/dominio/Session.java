@@ -55,7 +55,7 @@ public class Session {
 		return (int)Math.sqrt( Math.pow( x2 - x1 ,2) + Math.pow( y2 - y1 ,2) );
 	}
 
-	public static Session selectBestSession(Zone zone, Point point) {
+	public static Session selectBestSession(Zone zone, Point point)  {
 		var sessions = zone.getSessions();
 		return Collections.min(sessions, new Comparator<Session>() {
 			@Override
