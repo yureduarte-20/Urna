@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import controllers.Autenticator;
 import controllers.MemberController;
+import controllers.VoteController;
 
 public class MemberInterface extends JFrame {
 
@@ -54,5 +55,21 @@ public class MemberInterface extends JFrame {
 		});
 		btnSair.setBounds(450, 0, 62, 25);
 		contentPane.add(btnSair);
+
+		JButton btnBoletimDeVoto = new JButton("Boletim de Voto");
+		btnBoletimDeVoto.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+					JOptionPane.showMessageDialog(null, VoteController.getBallotPaper());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		btnBoletimDeVoto.setBounds(161, 49, 185, 25);
+		contentPane.add(btnBoletimDeVoto);
 	}
 }

@@ -51,11 +51,11 @@ public class TechnicianLogin extends JFrame {
 
 		setContentPane(contentPane);
 
-		JLabel lblNewLabel = new JLabel("Login");
+		JLabel lblNewLabel = new JLabel("Login do Técnico");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(185, 23, 143, 41);
+		lblNewLabel.setBounds(147, 25, 218, 41);
 		contentPane.add(lblNewLabel);
 
 		textField = new JTextField();
@@ -98,7 +98,18 @@ public class TechnicianLogin extends JFrame {
 
 			}
 		});
-		btnEntrar.setBounds(211, 305, 117, 25);
+		btnEntrar.setBounds(204, 305, 117, 25);
 		contentPane.add(btnEntrar);
+
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new SelectResource().setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(435, 0, 89, 25);
+		contentPane.add(btnVoltar);
 	}
 }

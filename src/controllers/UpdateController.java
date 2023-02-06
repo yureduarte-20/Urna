@@ -61,7 +61,6 @@ public class UpdateController {
 	}
 	public static Voter updateVoter(int id, String name, String password, Point point) throws UserNotFound {
 		var voter = Voter.getVoter(id);
-		voter.setPoint(point);
 		voter.setPassword(password);
 		voter.setName(name);
 		var zone = Zone.selectBestZone(point);

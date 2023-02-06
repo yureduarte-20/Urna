@@ -1,7 +1,5 @@
 package controllers;
 
-import java.awt.Point;
-
 import dominio.BoardMember;
 import dominio.Technician;
 import dominio.Voter;
@@ -15,8 +13,6 @@ public class Autenticator {
 
 	public static Technician authenticatedTechnician = null;
 	public static BoardMember authenticatedBoardMember = null;
-
-
 	public static Voter authenticatedVoter = null;
 
 
@@ -30,7 +26,7 @@ public class Autenticator {
 	}
 
 	public BoardMember validateMember(int id, String password) throws UserNotFound {
-		int index = BoardMember.members.indexOf( new BoardMember(id, password, "", new Point(0, 0)) );
+		int index = BoardMember.members.indexOf( new BoardMember( new Voter(id, password, null, null) ) );
 
 		if(index == -1)
 			throw new UserNotFound();
@@ -58,12 +54,12 @@ public class Autenticator {
 			if(voter.getId() == id)
 				v = voter;
 		}
-		System.out.println(v);
-		System.out.println(Voter.voters);
+
 		if(v == null)
 			throw new UserNotFound();
 		if(!v.getPassword().equals(password) )
 			throw new UserInvalid();
+
 		return v;
 	}
 

@@ -7,5 +7,5 @@ public class ShiftExceededLimit extends Exception{
 	public ShiftExceededLimit() {
 		super("Estorou limite de dois turnos por eleição.");
 	}
-	
+
 }

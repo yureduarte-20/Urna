@@ -7,5 +7,5 @@ public class ElectionStillActive extends Exception{
 	public ElectionStillActive() {
 		super("Você não pode abrir uma eleição enquanto uma está em aberto");
 	}
-	
+
 }

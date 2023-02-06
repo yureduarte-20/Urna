@@ -21,7 +21,6 @@ import exceptions.NotEligible;
 import exceptions.PartyAlreadyExists;
 import exceptions.PartyNotFound;
 import exceptions.SessionAlreadyExists;
-import exceptions.SessionNotFound;
 import exceptions.ShiftExceededLimit;
 import exceptions.ShiftNotFound;
 import exceptions.ShiftStillActive;
@@ -35,24 +34,24 @@ public class RegisterController {
 	static Random generator = new Random();
 
 	public static Voter registerVoter(int id, String password, String name, Point point) throws UserAlreadyExists{
-		Voter newVoter = new Voter(id, password, name, point);
 		for (var voter : Voter.voters) {
-			if (voter.getId() == newVoter.getId()) {
+			if (voter.getId() == id) {
 				throw new UserAlreadyExists();
 			}
 		}
-		registerVoterInBestZoneAndSection(newVoter);
 
+		Session session = registerVoterInBestZoneAndSection(point);
+		Voter newVoter = new Voter(id, password, name, session);
 		Voter.voters.add(newVoter);
 
 		return newVoter;
 	}
 
-	private static Voter registerVoterInBestZoneAndSection(Voter voter) {
-		var zone = Zone.selectBestZone(voter.getPoint());
-		var session = Session.selectBestSession(zone, voter.getPoint());
-		voter.setSession(session);
-		return voter;
+	private static Session registerVoterInBestZoneAndSection(Point point) {
+		var zone = Zone.selectBestZone(point);
+		var session = Session.selectBestSession(zone, point);
+
+		return session;
 	}
 
 
@@ -121,14 +120,14 @@ public class RegisterController {
 		ElectoralPlate.getElectoralPlate().add(el);
 		return el;
 	}
-	
+
 	public static void saveElection(String identification ) throws ElectionAlreadyExists, ElectionStillActive{
 		if(Election.getEletions().isEmpty()) {
 			Election e = new Election(identification);
 			Election.addElection(e);
 			return;
 		}
-		
+
 		for(var ele : Election.getEletions()) {
 			if(ele.isActive()) {
 				throw new ElectionStillActive();
@@ -137,16 +136,16 @@ public class RegisterController {
 		Election e = new Election(identification);
 		Election.addElection(e);
 	}
-	
+
 	public static void saveShift(String electionId, Shift s) throws ElectionNotFound, ShiftExceededLimit, ShiftStillActive {
 		var el = Election.getElection(electionId);
 		el.addShift(s);
 	}
-	
+
 	public static void saveVote(Vote v) throws ElectionNotFound, ShiftNotFound {
 		var el = Election.getActiveElection();
 		var shift = el.getActiveShift();
 		shift.addVote(v);
 	}
-	
+
 }

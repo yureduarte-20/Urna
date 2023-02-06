@@ -7,5 +7,5 @@ public class ElectionNotFound extends Exception{
 	public ElectionNotFound() {
 		super("Eleição não encontrado");
 	}
-	
+
 }

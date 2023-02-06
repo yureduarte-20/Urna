@@ -7,5 +7,5 @@ public class ShiftStillActive extends Exception{
 	public ShiftStillActive() {
 		super("Você não pode abrir um turno enquanto outro está em aberto");
 	}
-	
+
 }

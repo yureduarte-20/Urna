@@ -51,11 +51,11 @@ public class BoardMemberLogin extends JFrame {
 
 		setContentPane(contentPane);
 
-		JLabel lblNewLabel = new JLabel("Login");
+		JLabel lblNewLabel = new JLabel("Logindo Mesário");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(185, 23, 143, 41);
+		lblNewLabel.setBounds(137, 27, 239, 41);
 		contentPane.add(lblNewLabel);
 
 		textField = new JTextField();
@@ -100,5 +100,16 @@ public class BoardMemberLogin extends JFrame {
 		});
 		btnEntrar.setBounds(211, 305, 117, 25);
 		contentPane.add(btnEntrar);
+
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new SelectResource().setVisible(true);
+			}
+		});
+		btnVoltar.setBounds(459, 0, 77, 25);
+		contentPane.add(btnVoltar);
 	}
 }

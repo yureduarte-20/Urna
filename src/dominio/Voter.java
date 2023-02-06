@@ -1,6 +1,5 @@
 package dominio;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +14,12 @@ public class Voter implements Comparable<Voter>{
 	private String password;
 	private String name;
 	private Session session;
-	private Point point;
 
-	public Voter(int id, String password, String name, Point point) {
+	public Voter(int id, String password, String name, Session session) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
-		this.point = point;
+		this.session = session;
 	}
 
 	public int getId() {
@@ -53,7 +51,7 @@ public class Voter implements Comparable<Voter>{
 
 	@Override
 	public String toString() {
-		return String.format("{id: %d, password: %s, name: %s}", id, password, name);
+		return String.format("{id: %d, password: %s, name: %s, sessao: (%d, %d)}", id, password, name, session.getAddress().x, session.getAddress().y);
 	}
 
 	public Session getSession() {
@@ -68,13 +66,6 @@ public class Voter implements Comparable<Voter>{
 		return true;
 	}
 
-	public Point getPoint() {
-		return point;
-	}
-
-	public void setPoint(Point point) {
-		this.point = point;
-	}
 	public static Voter getVoter(int id) throws UserNotFound {
 		for(var voter : Voter.voters) {
 			if(voter.getId() == id) {

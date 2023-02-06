@@ -44,7 +44,7 @@ public class SelectResource extends JFrame {
 
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setBounds(100, 100, 536, 421);
+		setBounds(100, 100, 536, 289);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -52,11 +52,11 @@ public class SelectResource extends JFrame {
 
 		setContentPane(contentPane);
 
-		JLabel lblNewLabel = new JLabel("Selecionar Recurso");
+		JLabel lblNewLabel = new JLabel("Selecionar o tipo de Usuário");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(128, 12, 259, 41);
+		lblNewLabel.setBounds(73, 12, 361, 41);
 		contentPane.add(lblNewLabel);
 
 		JButton btnTcnico = new JButton("Técnico");

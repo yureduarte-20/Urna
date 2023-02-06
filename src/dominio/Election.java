@@ -16,11 +16,11 @@ public class Election {
 	public static void setEletions(List<Election> eletions) {
 		Election.eletions = eletions;
 	}
-	private static List<Election> eletions = new ArrayList();
+	private static List<Election> eletions = new ArrayList<>();
     public static List<Election> getEletions() {
 		return eletions;
 	}
-    
+
     public static void addElection(Election el) throws ElectionAlreadyExists{
     	for(var ele : Election.getEletions()) {
     		if(ele.getIdentification() == el.getIdentification()) {
@@ -83,7 +83,7 @@ public class Election {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
+
 	public Shift getActiveShift() throws ShiftNotFound{
 		for(var shift : this.shifts) {
 			if(shift.isActive())
@@ -91,5 +91,5 @@ public class Election {
 		}
 		throw new ShiftNotFound();
 	}
-    
+
 }

@@ -131,8 +131,6 @@ public class EditVoter extends JFrame {
 					btnPesquisar.setEnabled(false);
 					name.setText( voter.getName() );
 					passwordField.setText(voter.getPassword());
-					inputX.setText( String.valueOf(voter.getPoint().x) );
-					inputY.setText( String.valueOf(voter.getPoint().y) );
 					btnCadastrar.setVisible(true);
 				}catch(Exception ex) {
 					ex.printStackTrace();

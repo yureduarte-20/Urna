@@ -1,6 +1,5 @@
 package dominio;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,14 +13,8 @@ public class Candidate extends Voter{
 	private String fictitiousName;
 	private Party party;
 
-	public Candidate(int id, String password, String name, String fictitiousName, Point loc, Party party) {
-		super(id, password, name, loc);
-		this.fictitiousName = fictitiousName;
-		this.party = party;
-	}
-
 	public Candidate(Voter voter, String fictitiousName, Party party) {
-		super(voter.getId(), voter.getPassword(), voter.getName(), voter.getPoint());
+		super(voter.getId(), voter.getPassword(), voter.getName(), voter.getSession());
 		this.fictitiousName = fictitiousName;
 		this.party = party;
 	}

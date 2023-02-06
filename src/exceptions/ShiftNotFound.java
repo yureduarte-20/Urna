@@ -7,5 +7,5 @@ public class ShiftNotFound extends Exception{
 	public ShiftNotFound() {
 		super("Turno não encontrado");
 	}
-	
+
 }

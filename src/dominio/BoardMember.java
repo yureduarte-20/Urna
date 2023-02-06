@@ -1,6 +1,5 @@
 package dominio;
 
-import java.awt.Point;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +11,8 @@ public class BoardMember extends Voter{
 	public static List<BoardMember> members = new ArrayList<>();
 
 
-	public BoardMember(int id, String password, String name, Point loc) {
-		super(id, password, name, loc);
-	}
-
 	public BoardMember(Voter voter) {
-		super(voter.getId(), voter.getPassword(), voter.getName(), voter.getPoint());
+		super(voter.getId(), voter.getPassword(), voter.getName(), voter.getSession());
 	}
 
 	public static BoardMember createMember(int id, Technician tech) throws UserNotFound  {
