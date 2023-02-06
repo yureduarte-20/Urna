@@ -19,7 +19,7 @@ public class Candidate extends Voter{
 		this.party = party;
 	}
 
-	public static Candidate createCandidate(int id, Technician tech, String fictitiousName, Party party) throws UserNotFound, NotEligible  {
+	public static Candidate createCandidate(int id, String fictitiousName, Party party) throws UserNotFound, NotEligible  {
 		Voter voter = null;
 
 		for(Voter _voter: Voter.voters) {
@@ -29,8 +29,6 @@ public class Candidate extends Voter{
 
 		if(voter == null)
 			throw new UserNotFound();
-		if(!voter.isEligible())
-			throw new NotEligible();
 
 		Candidate candidate = new Candidate(voter, fictitiousName, party);
 		candidates.add(candidate);

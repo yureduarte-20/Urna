@@ -76,12 +76,10 @@ public class Seeders {
 
 
 	private static void insertCandidates() {
-		Technician tec = Technician.technical.get(0);
-
 		try {
-			RegisterController.saveCandidate(1, tec, "Ramon Fictício", 100);
-			RegisterController.saveCandidate(6, tec, "Ramon Fictício2", 100);
-			RegisterController.saveCandidate(5, tec, "Ramon Fictício3", 100);
+			RegisterController.saveCandidate(1, "Ramon Fictício", 100);
+			RegisterController.saveCandidate(6, "Ramon Fictício2", 100);
+			RegisterController.saveCandidate(5, "Ramon Fictício3", 100);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

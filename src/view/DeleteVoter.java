@@ -54,8 +54,7 @@ public class DeleteVoter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String numberVoter = textField.getText();
 				try {
-					Voter voter = VoterController.getById( Integer.parseInt(numberVoter) );
-					Voter.voters.remove(voter);
+					Voter.voters.remove( VoterController.getById( Integer.parseInt(numberVoter) ) );
 
 					JOptionPane.showMessageDialog(null, "Eleitor deletado com sucesso!");
 				} catch(UserNotFound e1) {

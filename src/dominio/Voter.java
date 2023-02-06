@@ -14,6 +14,8 @@ public class Voter implements Comparable<Voter>{
 	private String password;
 	private String name;
 	private Session session;
+	
+	private boolean alreadyVote = false;
 
 	public Voter(int id, String password, String name, Session session) {
 		this.id = id;
@@ -85,6 +87,13 @@ public class Voter implements Comparable<Voter>{
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void vote() {
+		alreadyVote = true;
+	}
 
+	public boolean canVote() {
+		return !alreadyVote;
+	}
 
 }

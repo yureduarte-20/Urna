@@ -62,7 +62,6 @@ public class RegisterCandidate extends JFrame {
 				try {
 				    RegisterController.saveCandidate(
 					  	  Integer.parseInt(numberVoter),
-						  Autenticator.authenticatedTechnician,
 						  fictName.getText(),
 						  Integer.parseInt(numberParty)
 				    );

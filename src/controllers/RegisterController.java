@@ -14,6 +14,7 @@ import dominio.Technician;
 import dominio.Vote;
 import dominio.Voter;
 import dominio.Zone;
+import exceptions.AlreadyVote;
 import exceptions.ElectionAlreadyExists;
 import exceptions.ElectionNotFound;
 import exceptions.ElectionStillActive;
@@ -50,10 +51,10 @@ public class RegisterController {
 		return BoardMember.createMember(id, tech);
 	}
 
-	public static Candidate saveCandidate(int id, Technician tech, String fictitiousName, int partyNumber) throws NotEligible, UserNotFound, PartyNotFound {
+	public static Candidate saveCandidate(int id, String fictitiousName, int partyNumber) throws NotEligible, UserNotFound, PartyNotFound {
 		Party party = PartyController.getByNumber(partyNumber);
 
-		return Candidate.createCandidate(id, tech, fictitiousName, party);
+		return Candidate.createCandidate(id, fictitiousName, party);
 	}
 
 	public static Party saveParty(String name, int number, String acronym) throws PartyAlreadyExists {
@@ -103,10 +104,9 @@ public class RegisterController {
 	}
 
 	public static ElectoralPlate saveEletroralPlate( int principalId, int viceId, String number ) throws UserNotFound {
-		System.out.println(Candidate.getCandidate(viceId).toString());
-		System.out.println(Candidate.getCandidate(principalId).toString());
 		var principal = Candidate.getCandidate(principalId);
 		var vice = Candidate.getCandidate(viceId);
+		
 		var el = new ElectoralPlate(principal, vice, number);
 		ElectoralPlate.getElectoralPlate().add(el);
 		return el;
@@ -133,10 +133,16 @@ public class RegisterController {
 		el.addShift(s);
 	}
 
-	public static void saveVote(Vote v) throws ElectionNotFound, ShiftNotFound {
-		var el = Election.getActiveElection();
-		var shift = el.getActiveShift();
-		shift.addVote(v);
+	public static void saveVote(Vote v) throws ElectionNotFound, ShiftNotFound, AlreadyVote {
+		if(v.getVoter().canVote()) {
+			var el = Election.getActiveElection();
+			var shift = el.getActiveShift();
+			v.getVoter().vote();
+			shift.addVote(v);	
+		
+		} else
+			throw new AlreadyVote();
+		
 	}
 
 }
