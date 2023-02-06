@@ -6,16 +6,15 @@ import java.util.Comparator;
 
 public class Session {
 
+	private int sessionNumber;
+	private Point address = new Point();
+	
 	public Session(int sessionNumber, Point address) {
 		super();
 		this.sessionNumber = sessionNumber;
 		this.address = address;
 
 	}
-
-	private int sessionNumber;
-	private Point address = new Point();
-	private boolean hasVacancy;
 
 	public int getSessionNumber() {
 		return sessionNumber;
@@ -31,14 +30,6 @@ public class Session {
 
 	public void setAddress(Point address) {
 		this.address = address;
-	}
-
-	public boolean isHasVacancy() {
-		return hasVacancy;
-	}
-
-	public void setHasVacancy(boolean hasVacancy) {
-		this.hasVacancy = hasVacancy;
 	}
 
 	private static int euclidianDistance(Point p, Point q) {

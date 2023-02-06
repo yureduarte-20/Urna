@@ -34,26 +34,17 @@ public class RegisterController {
 	static Random generator = new Random();
 
 	public static Voter registerVoter(int id, String password, String name, Point point) throws UserAlreadyExists{
-		for (var voter : Voter.voters) {
-			if (voter.getId() == id) {
-				throw new UserAlreadyExists();
-			}
-		}
+		
+		if( Voter.voters.contains( new Voter(id, password, name, null) ) )
+			throw new UserAlreadyExists();
 
-		Session session = registerVoterInBestZoneAndSection(point);
+		var zone = Zone.selectBestZone(point);
+		Session session = Session.selectBestSession(zone, point);
 		Voter newVoter = new Voter(id, password, name, session);
 		Voter.voters.add(newVoter);
 
 		return newVoter;
 	}
-
-	private static Session registerVoterInBestZoneAndSection(Point point) {
-		var zone = Zone.selectBestZone(point);
-		var session = Session.selectBestSession(zone, point);
-
-		return session;
-	}
-
 
 	public static BoardMember createMember(int id, Technician tech) throws UserNotFound {
 		return BoardMember.createMember(id, tech);

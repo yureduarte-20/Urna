@@ -104,10 +104,11 @@ public class RegisterVoter extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e)  {
+				
 				int id = Integer.parseInt(inputNumRegister.getText());
 				int x = Integer.parseInt(inputX.getText());
 				int y = Integer.parseInt(inputY.getText());
-				//var voter = new Voter(Voter.count++, passwordField.getText(), getName(), new Point(x, y));
+				
 				try {
 					RegisterController.registerVoter(id, passwordField.getText(), name.getText(), new Point(x, y));
 					JOptionPane.showMessageDialog(null, "Criado com sucesso!");
@@ -119,9 +120,6 @@ public class RegisterVoter extends JFrame {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
-				//int y = Integer.parseInt(getWarningString())
-				//RegisterController.registerVoter();
-				//Technician.technical.add( new Technician( Integer.parseInt( inputNumRegister.getText() ) , passwordField.getText()) );
 
 			}
 		});
